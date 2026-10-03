@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Prediction - AgriMitra AI</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        body {
+            background: #f4f8f4;
+        }
+
+        .navbar {
+            background: #198754;
+        }
+
+        .main-card {
+            max-width: 1000px;
+            margin: 40px auto;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            background: #198754;
+            color: white;
+            padding: 25px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: #198754;
+            margin-bottom: 20px;
+        }
+
+        .data-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .result-box {
+            border-radius: 15px;
+            padding: 25px;
+            background: #f8f9fa;
+        }
+
+        .predict-btn {
+            padding: 12px 40px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand fw-bold"
+            href="{% url 'farmer_dashboard' %}"
+        >
+            🌱 AgriMitra AI
+        </a>
+
+        <a
+            href="{% url 'farmer_dashboard' %}"
+            class="btn btn-light btn-sm"
+        >
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<div class="container">
+
+
+    <div class="card main-card">
+
+
+        <!-- HEADER -->
+
+        <div class="header text-center">
+
+            <h2>
+                🤖 AI Crop Prediction
+            </h2>
+
+            <p class="mb-0">
+                Analyze your crop using AI
+            </p>
+
+        </div>
+
+
+
+        <div class="card-body p-4">
+
+
+            <!-- INPUT FORM -->
+
+            <h4 class="section-title">
+                📋 Select Crop for Prediction
+            </h4>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- FARM -->
+
+                <div class="mb-4">
+
+                    <label class="form-label fw-bold">
+                        Select Farm
+                    </label>
+
+                    <select
+                        name="farm"
+                        class="form-select"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Farm --
+                        </option>
+
+                        {% for farm in farms %}
+
+                        <option
+                            value="{{ farm.id }}"
+                            {% if selected_farm and selected_farm.id == farm.id %}
+                                selected
+                            {% endif %}
+                        >
+
+                            {{ farm.farm_name }}
+                            - {{ farm.location }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CROP -->
+
+                <div class="mb-4">
+
+                    <label class="form-label fw-bold">
+                        Select Crop
+                    </label>
+
+                    <select
+                        name="crop"
+                        class="form-select"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Crop --
+                        </option>
+
+                        {% for crop in crops %}
+
+                        <option
+                            value="{{ crop.id }}"
+                            {% if selected_crop and selected_crop.id == crop.id %}
+                                selected
+                            {% endif %}
+                        >
+
+                            {{ crop.crop_name }}
+                            - {{ crop.variety }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="text-center">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success predict-btn"
+                    >
+
+                        🤖 Analyze & Predict
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+
+            {% if selected_crop %}
+
+            <hr class="my-5">
+
+
+            <!-- INPUT DATA -->
+
+            <h4 class="section-title">
+                📊 Input Data Used for Analysis
+            </h4>
+
+
+            <div class="row">
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            👨‍🌾 Farmer
+                        </span>
+
+                        <div>
+                            {{ farmer.name }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🚜 Farm
+                        </span>
+
+                        <div>
+                            {{ selected_farm.farm_name }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            📍 Location
+                        </span>
+
+                        <div>
+                            {{ selected_farm.location }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            📐 Farm Area
+                        </span>
+
+                        <div>
+                            {{ selected_farm.area }} acre
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🌱 Crop
+                        </span>
+
+                        <div>
+                            {{ selected_crop.crop_name }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🌾 Variety
+                        </span>
+
+                        <div>
+                            {{ selected_crop.variety }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🌱 Crop Stage
+                        </span>
+
+                        <div>
+                            {{ selected_crop.crop_stage }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            💧 Irrigation Type
+                        </span>
+
+                        <div>
+                            {{ selected_crop.irrigation_type }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            📅 Sowing Date
+                        </span>
+
+                        <div>
+                            {{ selected_crop.sowing_date }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🌾 Expected Harvest
+                        </span>
+
+                        <div>
+                            {{ selected_crop.expected_harvest_date }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="data-box">
+
+                        <span class="data-label">
+                            🪨 Soil Type
+                        </span>
+
+                        <div>
+                            {{ selected_farm.soil_type }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            {% if prediction %}
+
+            <hr class="my-5">
+
+
+            <!-- AI RESULT -->
+
+            <h4 class="section-title">
+                🤖 AI Prediction Result
+            </h4>
+
+
+            <div class="result-box">
+
+
+                <div class="row text-center">
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3">
+
+                            <h6>
+                                🌱 Crop Health
+                            </h6>
+
+                            <h3 class="text-success">
+                                {{ prediction.health }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3">
+
+                            <h6>
+                                📊 Confidence
+                            </h6>
+
+                            <h3>
+                                {{ prediction.confidence }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3">
+
+                            <h6>
+                                ⚠️ Risk Level
+                            </h6>
+
+                            <h3 class="text-success">
+                                {{ prediction.risk }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <hr>
+
+
+                <div class="alert alert-info">
+
+                    <h5>
+                        💡 AI Recommendation
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ prediction.recommendation }}
+                    </p>
+
+                </div>
+
+
+            </div>
+
+            {% endif %}
+
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

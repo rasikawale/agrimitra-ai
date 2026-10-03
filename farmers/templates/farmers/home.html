@@ -10,82 +10,1159 @@
 
     <title>AgriMitra AI | Smart Farming</title>
 
+
+    <!-- Bootstrap -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
+
+    <!-- Google Fonts -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
     <style>
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
         body {
-            background: #f4f9f4;
-            font-family: Arial, sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            background: #f7faf5;
+            color: #183b25;
+            overflow-x: hidden;
         }
 
-        /* NAVBAR */
 
-        .navbar-brand {
-            font-size: 24px;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* HERO */
 
-        .hero {
-            background: linear-gradient(
-                135deg,
-                #198754,
-                #0f5132
-            );
-
-            color: white;
-
-            padding: 100px 20px;
-
-            border-radius: 0 0 40px 40px;
+        a {
+            text-decoration: none;
         }
 
-        .hero h1 {
-            font-size: 55px;
-            font-weight: 700;
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .custom-navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
         }
 
-        .hero p {
-            font-size: 19px;
-            line-height: 1.7;
+
+        .navbar-inner {
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.22);
+
+            border-radius: 18px;
+
+            padding: 10px 15px 10px 20px;
         }
 
-        .hero-icon {
-            font-size: 150px;
+
+        .brand {
+
+            color: white !important;
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* FEATURE CARDS */
 
-        .feature-card {
-            border: none;
-            border-radius: 20px;
+        .brand span {
+            color: #c8f169;
+        }
+
+
+        .nav-link-custom {
+
+            color: rgba(255,255,255,0.88);
+
+            font-weight: 500;
+
+            margin: 0 10px;
 
             transition: 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-8px);
+
+        .nav-link-custom:hover {
+            color: #d7f57d;
         }
 
-        .icon {
-            font-size: 50px;
+
+        .login-btn {
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.5);
+
+            border-radius: 12px;
+
+            padding: 10px 18px;
+
+            transition: 0.3s;
         }
 
-        /* LOGIN REGISTER */
 
-        .auth-section {
+        .login-btn:hover {
+
             background: white;
+
+            color: #14532d;
+        }
+
+
+        .register-btn {
+
+            background: #c8f169;
+
+            color: #173b22;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 11px 20px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .register-btn:hover {
+
+            background: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 760px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(7, 45, 25, 0.96) 0%,
+                    rgba(12, 75, 38, 0.82) 45%,
+                    rgba(12, 75, 38, 0.35) 100%
+                ),
+
+                url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            right: -250px;
+
+            bottom: -300px;
+
+            background: rgba(200, 241, 105, 0.18);
+
+            border-radius: 50%;
+
+            filter: blur(5px);
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding-top: 80px;
+        }
+
+
+        .hero-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: rgba(200, 241, 105, 0.13);
+
+            border: 1px solid rgba(200, 241, 105, 0.35);
+
+            color: #d9f58d;
+
+            padding: 9px 15px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-title {
+
+            color: white;
+
+            font-size: clamp(48px, 6vw, 78px);
+
+            line-height: 1.03;
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+        }
+
+
+        .hero-title span {
+            color: #c8f169;
+        }
+
+
+        .hero-description {
+
+            color: rgba(255,255,255,0.82);
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            max-width: 650px;
+
+            margin-top: 25px;
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 35px;
+        }
+
+
+        .hero-primary {
+
+            background: #c8f169;
+
+            color: #173b22;
+
+            padding: 14px 25px;
+
+            border-radius: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .hero-primary:hover {
+
+            background: white;
+
+            color: #173b22;
+
+            transform: translateY(-3px);
+        }
+
+
+        .hero-secondary {
+
+            border: 1px solid rgba(255,255,255,0.5);
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .hero-secondary:hover {
+
+            background: rgba(255,255,255,0.12);
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           AI CARD
+        ===================================================== */
+
+        .hero-dashboard {
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        .ai-card {
+
+            background: rgba(255,255,255,0.94);
+
+            border-radius: 24px;
+
+            padding: 25px;
+
+            width: 370px;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.25);
+
+            animation: floating 4s ease-in-out infinite;
+        }
+
+
+        @keyframes floating {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+
+        .ai-card-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .ai-title {
+
+            font-weight: 700;
+
+            color: #173b22;
+        }
+
+
+        .status {
+
+            background: #e7f8d3;
+
+            color: #43820f;
+
+            padding: 5px 10px;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .crop-box {
+
+            background: #f3f8ed;
+
+            padding: 18px;
+
+            border-radius: 16px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .crop-icon {
+            font-size: 35px;
+        }
+
+
+        .health {
+
+            color: #319052;
+
+            font-weight: 800;
+
+            font-size: 24px;
+        }
+
+
+        .progress {
+
+            height: 8px;
+
             border-radius: 20px;
         }
 
-        /* FOOTER */
+
+        .progress-bar {
+            background: #76b947;
+        }
+
+
+        .recommendation {
+
+            background: #fff8dc;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            font-size: 14px;
+
+            color: #675719;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .trust-bar {
+
+            background: white;
+
+            padding: 30px 0;
+
+            border-bottom: 1px solid #e8eee5;
+        }
+
+
+        .trust-item {
+            text-align: center;
+        }
+
+
+        .trust-number {
+
+            font-family: 'Outfit', sans-serif;
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            color: #216638;
+        }
+
+
+        .trust-label {
+
+            color: #758279;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        .section {
+            padding: 100px 0;
+        }
+
+
+        .section-label {
+
+            color: #5e9828;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section-title {
+
+            font-size: 46px;
+
+            font-weight: 800;
+
+            color: #173b22;
+        }
+
+
+        .section-description {
+
+            color: #718077;
+
+            max-width: 600px;
+
+            margin: 15px auto 0;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .feature-card {
+
+            background: white;
+
+            border: 1px solid #e8eee4;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            height: 100%;
+
+            transition: 0.35s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .feature-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 4px;
+
+            background: #8fca43;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: 0.35s;
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 20px 45px rgba(30,75,35,0.12);
+        }
+
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+
+        .feature-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background: #edf7df;
+
+            color: #4f8f24;
+
+            font-size: 28px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .feature-card h4 {
+
+            font-weight: 700;
+
+            color: #173b22;
+
+            margin-bottom: 12px;
+        }
+
+
+        .feature-card p {
+
+            color: #758279;
+
+            line-height: 1.7;
+        }
+
+
+        .feature-link {
+
+            color: #43851f;
+
+            font-weight: 700;
+
+            display: inline-block;
+
+            margin-top: 10px;
+        }
+
+
+        /* ADMIN CARD */
+
+        .admin-card {
+
+            background: #fffaf0;
+
+            border-color: #f1dfb5;
+        }
+
+
+        .admin-card .feature-icon {
+
+            background: #fff0cf;
+
+            color: #9a6a12;
+        }
+
+
+        .admin-link {
+
+            color: #9a6a12;
+
+            font-weight: 700;
+
+            display: inline-block;
+
+            margin-top: 10px;
+        }
+
+
+        /* =====================================================
+           HOW IT WORKS
+        ===================================================== */
+
+        .steps-section {
+            background: #edf5e9;
+        }
+
+
+        .step-card {
+
+            text-align: center;
+
+            position: relative;
+
+            padding: 20px;
+        }
+
+
+        .step-number {
+
+            width: 58px;
+
+            height: 58px;
+
+            margin: auto auto 20px;
+
+            border-radius: 50%;
+
+            background: #216638;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+
+            font-size: 20px;
+        }
+
+
+        .step-card h5 {
+
+            font-weight: 700;
+
+            color: #173b22;
+        }
+
+
+        .step-card p {
+
+            color: #718077;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           AI SECTION
+        ===================================================== */
+
+        .ai-section {
+            padding: 100px 0;
+        }
+
+
+        .ai-feature-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #123e23,
+                    #28683a
+                );
+
+            border-radius: 30px;
+
+            padding: 70px;
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .ai-feature-box::after {
+
+            content: "🤖";
+
+            position: absolute;
+
+            right: 60px;
+
+            bottom: -35px;
+
+            font-size: 180px;
+
+            opacity: 0.08;
+        }
+
+
+        .ai-feature-box h2 {
+
+            font-size: 48px;
+
+            font-weight: 800;
+        }
+
+
+        .ai-feature-box p {
+
+            color: rgba(255,255,255,0.75);
+
+            line-height: 1.8;
+
+            max-width: 650px;
+        }
+
+
+        .ai-check {
+            margin-top: 20px;
+        }
+
+
+        .ai-check div {
+            margin-bottom: 12px;
+        }
+
+
+        .ai-check i {
+
+            color: #c8f169;
+
+            margin-right: 10px;
+        }
+
+
+        /* =====================================================
+           ADMIN ACCESS
+        ===================================================== */
+
+        .admin-section {
+
+            padding: 40px 0 90px;
+        }
+
+
+        .admin-access {
+
+            background: white;
+
+            border: 1px solid #e8eee4;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            box-shadow: 0 10px 30px rgba(30,75,35,0.06);
+        }
+
+
+        .admin-access-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 16px;
+
+            background: #fff2d6;
+
+            color: #9a6a12;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            flex-shrink: 0;
+        }
+
+
+        .admin-access h4 {
+
+            color: #173b22;
+
+            font-weight: 700;
+        }
+
+
+        .admin-access p {
+
+            color: #718077;
+
+            margin-bottom: 0;
+        }
+
+
+        .admin-login-btn {
+
+            background: #173b22;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition: 0.3s;
+        }
+
+
+        .admin-login-btn:hover {
+
+            background: #28683a;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta-section {
+            padding: 90px 0;
+        }
+
+
+        .cta-box {
+
+            background: #dff0c5;
+
+            border-radius: 28px;
+
+            padding: 65px 30px;
+
+            text-align: center;
+        }
+
+
+        .cta-box h2 {
+
+            font-size: 42px;
+
+            font-weight: 800;
+
+            color: #173b22;
+        }
+
+
+        .cta-box p {
+
+            color: #63705f;
+
+            max-width: 600px;
+
+            margin: 15px auto 30px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
-            margin-top: 50px;
+
+            background: #0b2e19;
+
+            color: white;
+
+            padding: 55px 0 25px;
+        }
+
+
+        .footer-brand {
+
+            font-size: 25px;
+
+            font-family: 'Outfit', sans-serif;
+
+            font-weight: 800;
+        }
+
+
+        .footer-brand span {
+            color: #c8f169;
+        }
+
+
+        .footer-text {
+
+            color: rgba(255,255,255,0.6);
+
+            line-height: 1.7;
+
+            max-width: 400px;
+        }
+
+
+        .footer-links a {
+
+            color: rgba(255,255,255,0.65);
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            transition: 0.3s;
+        }
+
+
+        .footer-links a:hover {
+            color: #c8f169;
+        }
+
+
+        .footer-bottom {
+
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            margin-top: 40px;
+
+            padding-top: 20px;
+
+            color: rgba(255,255,255,0.45);
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 991px) {
+
+            .hero {
+
+                min-height: auto;
+
+                padding: 160px 0 90px;
+            }
+
+
+            .hero-dashboard {
+
+                margin-top: 60px;
+            }
+
+
+            .ai-card {
+
+                width: 100%;
+
+                max-width: 400px;
+
+                margin: auto;
+            }
+
+
+            .nav-link-custom {
+                display: none;
+            }
+
+
+            .admin-access {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 576px) {
+
+            .hero-title {
+                font-size: 45px;
+            }
+
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+
+            .ai-feature-box {
+                padding: 40px 25px;
+            }
+
+
+            .ai-feature-box h2 {
+                font-size: 35px;
+            }
+
+
+            .section-title {
+                font-size: 36px;
+            }
+
+
+            .cta-box h2 {
+                font-size: 32px;
+            }
+
+
+            .admin-access {
+                padding: 25px;
+            }
+
         }
 
     </style>
@@ -96,40 +1173,85 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="custom-navbar">
 
     <div class="container">
 
-        <!-- LOGO -->
+        <div class="navbar-inner">
 
-        <a class="navbar-brand fw-bold"
-           href="{% url 'home' %}">
-
-            🌱 AgriMitra AI
-
-        </a>
+            <div class="d-flex align-items-center justify-content-between">
 
 
-        <!-- NAVIGATION -->
+                <!-- LOGO -->
 
-        <div class="d-flex gap-2">
+                <a
+                    href="{% url 'home' %}"
+                    class="brand"
+                >
 
-            <a
-                href="{% url 'login_farmer' %}"
-                class="btn btn-light"
-            >
-                🔐 Farmer Login
-            </a>
+                    🌱 AgriMitra <span>AI</span>
+
+                </a>
 
 
-            <a
-                href="{% url 'register_farmer' %}"
-                class="btn btn-outline-light"
-            >
-                🌱 Register
-            </a>
+                <!-- NAVIGATION -->
+
+                <div class="d-none d-lg-flex align-items-center">
+
+                    <a
+                        href="#features"
+                        class="nav-link-custom"
+                    >
+                        Features
+                    </a>
+
+
+                    <a
+                        href="#how"
+                        class="nav-link-custom"
+                    >
+                        How It Works
+                    </a>
+
+
+                    <a
+                        href="#ai"
+                        class="nav-link-custom"
+                    >
+                        AI Technology
+                    </a>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="d-flex gap-2">
+
+                    <a
+                        href="{% url 'login_farmer' %}"
+                        class="login-btn d-none d-sm-inline-block"
+                    >
+                        Farmer Login
+                    </a>
+
+
+                    <a
+                        href="{% url 'register_farmer' %}"
+                        class="register-btn"
+                    >
+                        Get Started
+                    </a>
+
+                </div>
+
+
+            </div>
 
         </div>
 
@@ -138,80 +1260,186 @@
 </nav>
 
 
-<!-- ================= HERO ================= -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-    <div class="container">
+    <div class="container hero-content">
 
         <div class="row align-items-center">
 
 
             <!-- LEFT -->
 
-            <div class="col-md-7">
+            <div class="col-lg-7">
 
-                <h1>
-                    Smart Farming
+                <div class="hero-badge">
+
+                    🌱 AI-Powered Smart Agriculture
+
+                </div>
+
+
+                <h1 class="hero-title">
+
+                    Smarter Farming.
+
                     <br>
-                    with AI 🤖
+
+                    <span>Better Decisions.</span>
+
                 </h1>
 
 
-                <p class="lead mt-4">
+                <p class="hero-description">
 
-                    AgriMitra AI is a smart farming platform
-                    that helps farmers manage their farms,
-                    monitor crops and make better farming
-                    decisions using Artificial Intelligence.
+                    AgriMitra AI brings intelligent technology
+                    to your farm. Manage your crops, understand
+                    your farm data and get AI-powered insights
+                    to support better farming decisions.
 
                 </p>
 
 
-                <!-- BUTTONS -->
-
-                <div class="mt-4 d-flex gap-3 flex-wrap">
+                <div class="hero-buttons">
 
 
                     <a
                         href="{% url 'register_farmer' %}"
-                        class="btn btn-light btn-lg"
+                        class="hero-primary"
                     >
 
-                        🌱 Join as Farmer
+                        <i class="fa-solid fa-seedling me-2"></i>
+
+                        Start Farming Smarter
 
                     </a>
 
 
                     <a
-                        href="{% url 'login_farmer' %}"
-                        class="btn btn-outline-light btn-lg"
+                        href="#features"
+                        class="hero-secondary"
                     >
 
-                        🔐 Farmer Login
+                        Explore Features
+
+                        <i class="fa-solid fa-arrow-down ms-2"></i>
 
                     </a>
+
 
                 </div>
 
             </div>
+
 
 
             <!-- RIGHT -->
 
-            <div class="col-md-5 text-center">
+            <div class="col-lg-5">
 
-                <div class="hero-icon">
+                <div class="hero-dashboard">
 
-                    🌾
+
+                    <div class="ai-card">
+
+
+                        <div class="ai-card-header">
+
+                            <div>
+
+                                <div class="text-muted small">
+                                    AI CROP ANALYSIS
+                                </div>
+
+                                <div class="ai-title">
+                                    Farm Health
+                                </div>
+
+                            </div>
+
+
+                            <span class="status">
+                                ● AI READY
+                            </span>
+
+                        </div>
+
+
+                        <div class="crop-box">
+
+                            <div class="d-flex align-items-center">
+
+                                <div class="crop-icon me-3">
+                                    🌾
+                                </div>
+
+
+                                <div>
+
+                                    <div class="text-muted small">
+                                        Example Crop
+                                    </div>
+
+                                    <strong>
+                                        Wheat
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <span class="text-muted">
+                                Example Health Score
+                            </span>
+
+
+                            <strong class="health">
+                                87%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress mb-4">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 87%"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="recommendation">
+
+                            <strong>
+                                💡 AI Recommendation
+                            </strong>
+
+                            <br>
+
+                            <span>
+                                Example result shown for demonstration.
+                            </span>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
-                <h4>
-                    Empowering Farmers
-                </h4>
-
             </div>
+
 
         </div>
 
@@ -220,300 +1448,746 @@
 </section>
 
 
-<!-- ================= FARMER LOGIN / REGISTER ================= -->
 
-<div class="container py-5">
+<!-- =====================================================
+     STATS
+===================================================== -->
 
-    <div class="auth-section shadow-sm p-5 text-center">
+<section class="trust-bar">
 
-        <h2>
-            👨‍🌾 Are you a Farmer?
-        </h2>
+    <div class="container">
 
-        <p class="text-muted mt-3">
-
-            Create your AgriMitra account and manage
-            your farming activities digitally.
-
-        </p>
+        <div class="row g-4">
 
 
-        <div class="d-flex justify-content-center gap-3 mt-4">
+            <div class="col-6 col-md-3">
+
+                <div class="trust-item">
+
+                    <div class="trust-number">
+                        AI
+                    </div>
+
+                    <div class="trust-label">
+                        Smart Predictions
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-3">
+
+                <div class="trust-item">
+
+                    <div class="trust-number">
+                        24/7
+                    </div>
+
+                    <div class="trust-label">
+                        Digital Access
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-3">
+
+                <div class="trust-item">
+
+                    <div class="trust-number">
+                        100%
+                    </div>
+
+                    <div class="trust-label">
+                        Digital Management
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-3">
+
+                <div class="trust-item">
+
+                    <div class="trust-number">
+                        🌱
+                    </div>
+
+                    <div class="trust-label">
+                        Farmer Focused
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="section"
+    id="features"
+>
+
+    <div class="container">
+
+
+        <div class="text-center mb-5">
+
+            <div class="section-label">
+                Platform Features
+            </div>
+
+
+            <h2 class="section-title">
+                Everything Your Farm Needs
+            </h2>
+
+
+            <p class="section-description">
+
+                AgriMitra AI provides separate tools for
+                farmers and administrators.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- ADMIN -->
+
+            <div class="col-lg-4">
+
+                <div class="feature-card admin-card">
+
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+
+                    <h4>
+                        Admin Management
+                    </h4>
+
+
+                    <p>
+
+                        Administrators can manage farmer
+                        records and monitor the overall
+                        farming platform.
+
+                    </p>
+
+
+                    <a
+                        href="/admin/"
+                        class="admin-link"
+                    >
+
+                        🔐 Admin Portal
+
+                        <i class="fa-solid fa-arrow-right ms-1"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FARM -->
+
+            <div class="col-lg-4">
+
+                <div class="feature-card">
+
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-wheat-awn"></i>
+
+                    </div>
+
+
+                    <h4>
+                        Farm & Crop Management
+                    </h4>
+
+
+                    <p>
+
+                        Farmers can manage their farms,
+                        soil information, crops, sowing
+                        dates, irrigation and crop stages.
+
+                    </p>
+
+
+                    <a
+                        href="{% url 'register_farmer' %}"
+                        class="feature-link"
+                    >
+
+                        Manage Your Farm
+
+                        <i class="fa-solid fa-arrow-right ms-1"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AI -->
+
+            <div class="col-lg-4">
+
+                <div class="feature-card">
+
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+
+                    <h4>
+                        AI Crop Prediction
+                    </h4>
+
+
+                    <p>
+
+                        Analyze crop and farm information
+                        using Machine Learning and receive
+                        intelligent farming insights.
+
+                    </p>
+
+
+                    <a
+                        href="{% url 'register_farmer' %}"
+                        class="feature-link"
+                    >
+
+                        Explore AI
+
+                        <i class="fa-solid fa-arrow-right ms-1"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section
+    class="section steps-section"
+    id="how"
+>
+
+    <div class="container">
+
+
+        <div class="text-center mb-5">
+
+            <div class="section-label">
+                Simple Process
+            </div>
+
+
+            <h2 class="section-title">
+                How AgriMitra AI Works
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-3">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+
+                    <h5>
+                        Create Account
+                    </h5>
+
+
+                    <p>
+                        Register as a farmer and create
+                        your digital profile.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+
+                    <h5>
+                        Add Your Farm
+                    </h5>
+
+
+                    <p>
+                        Enter your farm, soil and
+                        location information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+
+                    <h5>
+                        Add Your Crops
+                    </h5>
+
+
+                    <p>
+                        Record crop, variety, irrigation
+                        and crop stage information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        04
+                    </div>
+
+
+                    <h5>
+                        Get AI Insights
+                    </h5>
+
+
+                    <p>
+                        Use your farm data for
+                        AI-powered analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AI TECHNOLOGY
+===================================================== -->
+
+<section
+    class="ai-section"
+    id="ai"
+>
+
+    <div class="container">
+
+
+        <div class="ai-feature-box">
+
+
+            <div class="row align-items-center">
+
+
+                <div class="col-lg-8">
+
+
+                    <div
+                        class="section-label"
+                        style="color:#c8f169;"
+                    >
+
+                        Artificial Intelligence
+
+                    </div>
+
+
+                    <h2>
+
+                        Your Farm Data.
+
+                        <br>
+
+                        Smarter AI Insights.
+
+                    </h2>
+
+
+                    <p class="mt-4">
+
+                        AgriMitra AI uses farm and crop
+                        information as the foundation for
+                        intelligent analysis. The platform is
+                        designed to help farmers understand
+                        their crop information and explore
+                        AI-powered insights.
+
+                    </p>
+
+
+                    <div class="ai-check">
+
+
+                        <div>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Crop information analysis
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Farm and soil information
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Machine Learning predictions
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            AI-based recommendations
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN ACCESS
+===================================================== -->
+
+<section class="admin-section">
+
+    <div class="container">
+
+
+        <div class="admin-access">
+
+
+            <div class="d-flex align-items-center gap-3">
+
+
+                <div class="admin-access-icon">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h4 class="mb-1">
+                        Administrator Portal
+                    </h4>
+
+
+                    <p>
+
+                        Authorized administrators can access
+                        farmer management and system administration.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="/admin/"
+                class="admin-login-btn"
+            >
+
+                <i class="fa-solid fa-lock me-2"></i>
+
+                Admin Login
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+
+        <div class="cta-box">
+
+
+            <div class="section-label">
+                For Farmers
+            </div>
+
+
+            <h2>
+                Ready to Make Your Farm Smarter?
+            </h2>
+
+
+            <p>
+
+                Create your AgriMitra AI account and
+                start managing your farming activities
+                digitally.
+
+            </p>
 
 
             <a
                 href="{% url 'register_farmer' %}"
-                class="btn btn-success btn-lg"
+                class="hero-primary d-inline-block"
             >
 
-                🌱 Create Farmer Account
+                <i class="fa-solid fa-seedling me-2"></i>
+
+                Create Farmer Account
 
             </a>
 
 
-            <a
-                href="{% url 'login_farmer' %}"
-                class="btn btn-outline-success btn-lg"
-            >
-
-                🔐 Login
-
-            </a>
-
         </div>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- ================= FEATURES ================= -->
 
-<div class="container py-5">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
+<footer>
 
-    <div class="text-center mb-5">
-
-        <h2>
-            🌱 AgriMitra AI Features
-        </h2>
-
-        <p class="text-muted">
-
-            Smart digital tools for modern farming
-
-        </p>
-
-    </div>
+    <div class="container">
 
 
-    <div class="row g-4">
+        <div class="row g-5">
 
 
-        <!-- FARMER -->
+            <div class="col-lg-6">
 
-        <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm p-4 text-center h-100">
+                <div class="footer-brand">
 
-                <div class="icon">
-                    👨‍🌾
+                    🌱 AgriMitra <span>AI</span>
+
                 </div>
 
 
-                <h4 class="mt-3">
-                    Farmer Management
-                </h4>
+                <p class="footer-text mt-3">
 
-
-                <p class="text-muted">
-
-                    Register and manage your farmer
-                    profile and farming information.
+                    Smart farming technology designed to
+                    help farmers manage their farms and
+                    explore AI-powered crop insights.
 
                 </p>
 
 
-                <a
-                    href="{% url 'farmer_list' %}"
-                    class="btn btn-success"
-                >
-
-                    Manage Farmers
-
-                </a>
-
             </div>
 
-        </div>
 
 
-        <!-- FARM -->
+            <div class="col-6 col-lg-3">
 
-        <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm p-4 text-center h-100">
+                <h6 class="fw-bold mb-3">
+                    Platform
+                </h6>
 
-                <div class="icon">
-                    🌾
+
+                <div class="footer-links">
+
+                    <a href="#features">
+                        Features
+                    </a>
+
+
+                    <a href="#how">
+                        How It Works
+                    </a>
+
+
+                    <a href="#ai">
+                        AI Technology
+                    </a>
+
                 </div>
 
 
-                <h4 class="mt-3">
-                    Farm Management
-                </h4>
-
-
-                <p class="text-muted">
-
-                    Manage farm location, area,
-                    soil type and farming details.
-
-                </p>
-
-
-                <button
-                    class="btn btn-secondary"
-                    disabled
-                >
-
-                    Coming Soon
-
-                </button>
-
             </div>
 
-        </div>
 
 
-        <!-- AI -->
+            <div class="col-6 col-lg-3">
 
-        <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm p-4 text-center h-100">
+                <h6 class="fw-bold mb-3">
+                    Account
+                </h6>
 
-                <div class="icon">
-                    🤖
+
+                <div class="footer-links">
+
+                    <a href="{% url 'login_farmer' %}">
+                        Farmer Login
+                    </a>
+
+
+                    <a href="{% url 'register_farmer' %}">
+                        Farmer Register
+                    </a>
+
+
+                    <a href="/admin/">
+                        Admin Portal
+                    </a>
+
                 </div>
 
 
-                <h4 class="mt-3">
-                    AI Prediction
-                </h4>
-
-
-                <p class="text-muted">
-
-                    Get intelligent crop and farming
-                    recommendations using Machine Learning.
-
-                </p>
-
-
-                <button
-                    class="btn btn-secondary"
-                    disabled
-                >
-
-                    Coming Soon
-
-                </button>
-
             </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom text-center">
+
+            © 2026 AgriMitra AI · Smart Farming for a Better Future 🌱
 
         </div>
 
 
     </div>
-
-</div>
-
-
-<!-- ================= HOW IT WORKS ================= -->
-
-<div class="container py-5">
-
-
-    <div class="text-center mb-5">
-
-        <h2>
-            🚜 How AgriMitra Works
-        </h2>
-
-    </div>
-
-
-    <div class="row text-center g-4">
-
-
-        <div class="col-md-3">
-
-            <div class="icon">
-                📝
-            </div>
-
-            <h5>
-                1. Register
-            </h5>
-
-            <p class="text-muted">
-                Create your farmer account.
-            </p>
-
-        </div>
-
-
-        <div class="col-md-3">
-
-            <div class="icon">
-                🔐
-            </div>
-
-            <h5>
-                2. Login
-            </h5>
-
-            <p class="text-muted">
-                Access your farmer dashboard.
-            </p>
-
-        </div>
-
-
-        <div class="col-md-3">
-
-            <div class="icon">
-                🌾
-            </div>
-
-            <h5>
-                3. Manage Farm
-            </h5>
-
-            <p class="text-muted">
-                Add farms and crops.
-            </p>
-
-        </div>
-
-
-        <div class="col-md-3">
-
-            <div class="icon">
-                🤖
-            </div>
-
-            <h5>
-                4. AI Insights
-            </h5>
-
-            <p class="text-muted">
-                Get AI-based recommendations.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="bg-success text-white text-center p-4">
-
-    <p class="mb-0">
-
-        🌱 <strong>AgriMitra AI</strong>
-
-        <br>
-
-        Smart Farming for a Better Future
-
-    </p>
 
 </footer>
+
 
 
 </body>
