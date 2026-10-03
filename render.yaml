@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: agrimitra-ai
+    runtime: python
+
+    buildCommand: "bash build.sh"
+
+    startCommand: "gunicorn agrimitra_ai.wsgi:application"
+
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+
+      - key: DEBUG
+        value: "False"
+
+      - key: DATABASE_URL
+        fromDatabase:
+          name: agrimitra-db
+          property: connectionString
+
+databases:
+  - name: agrimitra-db
+    databaseName: agrimitra
+    user: agrimitra
